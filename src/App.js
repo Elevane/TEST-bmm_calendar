@@ -1,21 +1,23 @@
-import logo from './logo.svg';
+
+
+import React from 'react';
 import './App.css';
-import Calendar from 'react-calendar'
-import React, { useState } from 'react';
-import 'react-calendar/dist/Calendar.css';
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
-function App() {
-  const [value, onChange] = useState(new Date());
-  return (
-    <div className="App">
 
-        <Calendar
-        onChange={onChange}
-        value={value}
-      />
 
-    </div>
-  );
-}
-
-export default App;
+  export default class App extends React.Component {
+    render() {
+      return (
+        <FullCalendar
+          plugins={[ dayGridPlugin ]}
+          initialView="dayGridMonth"
+          events={[
+            { title: 'event 1', start: '2021-12-14', end: "2021-12-18" },
+            { title: 'event 2', date: '2021-12-14' }
+          ]}
+        />
+      )
+    }
+  }
